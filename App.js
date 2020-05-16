@@ -1,35 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from "./components/Button"
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      counter: 0
-    };
-  }
-  
-  changeCounter(val){
-    this.setState(prevState => (
-      {
-        counter:prevState.counter + val
-      }
-    ));
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>{this.state.counter}</Text>
-        <Button title="+" onPress={()=>this.changeCounter(1)} />
-        <Button title="-" onPress={()=>this.changeCounter(-1)} />
-      </View>
-    );
-  }
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+    </View>
+  );
 }
-
-export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -37,5 +15,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });
