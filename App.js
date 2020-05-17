@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import Button from "./components/Button";
 
 export default class App extends Component {
   constructor() {
@@ -18,6 +19,14 @@ export default class App extends Component {
       count: 0,
     };
   }
+
+  sumar = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  restar = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
 
   render() {
     return (
@@ -42,18 +51,8 @@ export default class App extends Component {
           value={this.state.value}
         />
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.setState({ count: this.state.count + 1 })}
-          >
-            <Text> Sumar </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.setState({ count: this.state.count - 1 })}
-          >
-            <Text> Restar </Text>
-          </TouchableOpacity>
+          <Button name="Sumar" onPress={this.sumar} />
+          <Button name="Restar" onPress={this.restar} />
         </View>
         <View style={styles.countContainer}>
           <Text style={styles.countText}>{this.state.count}</Text>
@@ -101,14 +100,6 @@ const styles = StyleSheet.create({
   image: {
     width: "80%",
     maxWidth: 280,
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 15,
-    borderRadius: 10,
-    margin: 20,
-    marginTop: 50,
   },
   countContainer: {
     alignItems: "center",
