@@ -30,18 +30,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <View style={styles.container}>
-          <View
-            style={{ width: 100, height: 100, backgroundColor: "powderblue" }}
-          />
-          <View
-            style={{ width: 250, height: 250, backgroundColor: "skyblue" }}
-          />
-          <View
-            style={{ width: 350, height: 350, backgroundColor: "steelblue" }}
-          />
-        </View>
+      <SafeAreaView style={styles.container}>
+        <View style={{ flex: 1, backgroundColor: "powderblue" }} />
+        <View style={{ flex: 2, backgroundColor: "skyblue" }} />
+        <View style={{ flex: 3, backgroundColor: "steelblue" }} />
       </SafeAreaView>
     );
   }
