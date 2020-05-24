@@ -1,67 +1,51 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TextInput,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
-import Button from "./components/Button";
+import { StyleSheet } from "react-native";
+
+import { Container, Header, Content, Footer, Text } from "native-base";
 
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {
-      value: "",
-      count: 0,
-    };
   }
-
-  sumar = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
-
-  restar = () => {
-    this.setState({ count: this.state.count - 1 });
-  };
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View style={{ flex: 1, backgroundColor: "powderblue" }} />
-        <View style={{ flex: 2, backgroundColor: "skyblue" }} />
-        <View style={{ flex: 3, backgroundColor: "steelblue" }} />
-      </SafeAreaView>
+      <Container style={styles.container}>
+        <Header style={styles.header}>
+          <Text>HEADER</Text>
+        </Header>
+        <Content contentContainerStyle={styles.content}>
+          <Text style={styles.contentText}>This is </Text>
+          <Text>Content Section</Text>
+        </Content>
+        <Footer style={styles.footer}>
+          <Text>FOOTER</Text>
+        </Footer>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
+  },
+  content: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    marginTop: 50,
-  },
-  image: {
-    width: "80%",
-    maxWidth: 280,
-  },
-  countContainer: {
-    alignItems: "center",
-    padding: 10,
-  },
-  countText: {
-    color: "#333333",
-    fontSize: 30,
-  },
-  buttonsContainer: {
     flexDirection: "row",
+    backgroundColor: "skyblue",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  contentText: {
+    color: "white",
+  },
+  header: {
+    backgroundColor: "powderblue",
+  },
+  footer: {
+    flexDirection: "row",
+    backgroundColor: "steelblue",
+    alignItems: "center",
   },
 });
