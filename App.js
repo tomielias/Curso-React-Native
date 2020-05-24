@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Button from "./components/Button";
+import { Counter } from "./components/Counter";
 
 export default class App extends Component {
   constructor() {
@@ -55,7 +56,7 @@ export default class App extends Component {
           <Button name="Restar" onPress={this.restar} />
         </View>
         <View style={styles.countContainer}>
-          <Text style={styles.countText}>{this.state.count}</Text>
+          <Counter count={this.state.count} />
         </View>
         <ScrollView
           style={{
