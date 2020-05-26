@@ -1,51 +1,16 @@
-import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { NativeRouter, Route, Link } from "react-router-native";
 
-import { Container, Header, Content, Footer, Text } from "native-base";
+import { About } from "./components/About";
+import { Home } from "./components/Home";
 
-export default class App extends Component {
-  constructor() {
-    super();
-  }
+const App = () => {
+  return (
+    <NativeRouter>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+    </NativeRouter>
+  );
+};
 
-  render() {
-    return (
-      <Container style={styles.container}>
-        <Header style={styles.header}>
-          <Text>HEADER</Text>
-        </Header>
-        <Content contentContainerStyle={styles.content}>
-          <Text style={styles.contentText}>This is </Text>
-          <Text>Content Section</Text>
-        </Content>
-        <Footer style={styles.footer}>
-          <Text>FOOTER</Text>
-        </Footer>
-      </Container>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-  },
-  content: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "skyblue",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  contentText: {
-    color: "white",
-  },
-  header: {
-    backgroundColor: "powderblue",
-  },
-  footer: {
-    flexDirection: "row",
-    backgroundColor: "steelblue",
-    alignItems: "center",
-  },
-});
+export default App;
