@@ -8,13 +8,13 @@ import {
 } from "react-native";
 import { DATA } from "./src/data/data";
 
-function Item({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
+import Constants from "expo-constants";
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
 
 export default function App() {
   return (
@@ -34,12 +34,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: Constants.statusBarHeight,
+    marginHorizontal: 16,
   },
   item: {
     backgroundColor: "#444444",
     padding: 20,
     marginVertical: 5,
-    marginHorizontal: 5,
   },
   title: {
     fontSize: 25,
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 32,
     color: "#444444",
+    backgroundColor: "#fff",
     padding: 10,
   },
 });
