@@ -1,5 +1,11 @@
 import React from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  SectionList,
+  StyleSheet,
+  Text,
+} from "react-native";
 import { DATA } from "./src/data/data";
 
 function Item({ title }) {
@@ -13,10 +19,13 @@ function Item({ title }) {
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={(item) => item.id}
+      <SectionList
+        sections={DATA}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <Item title={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.header}>{title}</Text>
+        )}
       />
     </SafeAreaView>
   );
@@ -33,7 +42,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   title: {
-    fontSize: 32,
+    fontSize: 25,
     color: "#DDDDDD",
+  },
+  header: {
+    fontSize: 32,
+    color: "#444444",
+    padding: 10,
   },
 });
