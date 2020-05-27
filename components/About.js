@@ -1,22 +1,27 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { Container, Content, View, Header, Footer } from "native-base";
-import { Link } from "react-router-native";
+import Button from "./Button";
 
-const About = () => {
+const About = ({ location, history }) => {
   return (
     <Container style={styles.container}>
       <Header style={styles.header}>
-        <Text>HEADER</Text>
+        <Text style={styles.headerText}>HolApp</Text>
       </Header>
       <Content contentContainerStyle={styles.content}>
-        <Text style={styles.contentText}>PAGE 2</Text>
-        <Link to="/">
-          <Text style={styles.contentText}>Go Home</Text>
-        </Link>
+        <Text style={styles.contentText}>Hola {location.state.name}</Text>
+        <Button
+          name="Go Home"
+          onPress={() => {
+            history.push({
+              pathname: "/",
+            });
+          }}
+        />
       </Content>
       <Footer style={styles.footer}>
-        <Text>FOOTER</Text>
+        <Text style={styles.footerText}>Curso React Native</Text>
       </Footer>
     </Container>
   );
@@ -36,15 +41,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   contentText: {
-    color: "gray",
-    fontSize: 40,
+    color: "#444444",
+    fontSize: 30,
   },
   header: {
     backgroundColor: "powderblue",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerText: {
+    fontSize: 30,
+    color: "#333333",
   },
   footer: {
     flexDirection: "row",
     backgroundColor: "steelblue",
     alignItems: "center",
+  },
+  footerText: {
+    color: "#EEEEEE",
+    fontSize: 30,
   },
 });
