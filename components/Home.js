@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, TextInput } from "react-native";
-import { Container, Content, View, Header, Footer } from "native-base";
-import Button from "./Button";
+import {
+  Container,
+  Content,
+  View,
+  Header,
+  Footer,
+  Button,
+  Title,
+} from "native-base";
 
 export default class Home extends Component {
   constructor(props) {
     super();
     this.state = {
       name: "",
+      disableButton: true,
     };
   }
+
   render() {
     const { history } = this.props;
     return (
@@ -27,18 +36,23 @@ export default class Home extends Component {
               borderWidth: 2,
               marginTop: 30,
             }}
-            onChangeText={(text) => this.setState({ name: text })}
-            value={this.state.value}
+            onChangeText={(text) =>
+              this.setState({ name: text, disableButton: false })
+            }
+            value={this.state.text}
           />
           <Button
-            name="Saludar"
+            style={styles.button}
+            disabled={this.state.disableButton}
             onPress={() => {
               history.push({
                 pathname: "/about",
                 state: { name: this.state.name },
               });
             }}
-          />
+          >
+            <Text>Saludar</Text>
+          </Button>
         </Content>
         <Footer style={styles.footer}>
           <Text style={styles.footerText}>Curso React Native</Text>
@@ -80,5 +94,13 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#EEEEEE",
     fontSize: 30,
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 15,
+    borderRadius: 10,
+    margin: 20,
+    marginTop: 30,
   },
 });
